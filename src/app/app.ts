@@ -21,10 +21,25 @@ import { FormsModule } from '@angular/forms';
 export class App {
   alfabeto: string = 'abcdefghijklmnopqrstuvwxyz';
   contatos: IContato[] = agenda;
+  favoritos: IContato[] = []
 
   filtroPorTexto: string = '';
   private removerAcentos(texto: string): string {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+  isFavorito(contato: string) {
+    return this.favoritos.some(f=>f.nome===contato)
+  }
+  deleteContato($event:string) {
+    this.contatos = this.contatos.filter(c=>{return c.nome !== $event})
+  }
+  favoritarContato($event: string) {
+    const contatoFavorito: boolean = this.favoritos.some((f)=>f.nome === $event)
+    if (!contatoFavorito) {
+      this.favoritos.push(this.contatos.filter(c=>{return c.nome === $event})[0])
+    } else {
+      this.favoritos = this.favoritos.filter(f=>{return f.nome !== $event})
+    }
   }
 
   filtrarContatosPorTexto(): IContato[] {

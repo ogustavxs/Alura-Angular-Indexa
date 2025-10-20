@@ -3,8 +3,12 @@
     <li>{{ nome }}</li>
     <li>{{ telefone }}</li>
     <li>
-      <button>x</button>
-      <button>+</button>
+      @if (favorito) {
+      <button (click)="sendStarEvent()">!</button>
+      } @else {
+      <button (click)="sendClick()">x</button>
+      <button (click)="sendStarEvent()">+</button>
+      }
     </li>
   </ul>
 </section>
