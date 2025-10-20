@@ -1,0 +1,21 @@
+section ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 0;
+}
+
+section ul button {
+  background-color: transparent;
+  border: 1px black solid;
+  border-radius: 100%;
+  margin-left: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+section ul button:hover {
+  background-color: black;
+  color: white;
+}
